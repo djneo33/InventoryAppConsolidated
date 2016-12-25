@@ -2,6 +2,7 @@ package com.example.omega.inventory;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class HomeScreen extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.homeScreenConnection);
         connectionView = (TextView) findViewById(R.id.connectionView);
         new network().execute();
+
 
         if (getIntent().hasExtra("paper")) {
             Bundle bundle = getIntent().getExtras();
