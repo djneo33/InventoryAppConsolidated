@@ -1,14 +1,17 @@
 package com.example.omega.inventoryConsolidated;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import android.widget.EditText;
 import android.widget.ListView;
 
 import android.widget.TextView;
@@ -27,12 +30,16 @@ public class Paper extends AppCompatActivity {
     public String screen = "main";
     public String paper = "";
     public TextView browserbar;
+    public EditText createnewpaper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_paper);//
+        setContentView(R.layout.activity_paper);
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+        createnewpaper = (EditText)findViewById(R.id.createNewPaper);
 
         new GetTables().execute();
         listView = (ListView) findViewById(R.id.listView);
