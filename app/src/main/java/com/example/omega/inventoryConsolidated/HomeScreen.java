@@ -26,7 +26,7 @@ public class HomeScreen extends AppCompatActivity {
             Bundle bundle = getIntent().getExtras();
             paper = bundle.getString("paper");
             insert = bundle.getString("insert");
-           rundate = bundle.getString("date");
+           rundate = bundle.getString("Date");
             quantity = bundle.getString("quantity");
             location = bundle.getString("location");
             comments = bundle.getString("comments");
@@ -54,7 +54,7 @@ public class HomeScreen extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeScreen.this, MainActivity.class);
+                Intent intent = new Intent(HomeScreen.this, Paper.class);
                 startActivity(intent);
             }
         });

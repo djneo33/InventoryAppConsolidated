@@ -14,7 +14,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class finalScreen extends AppCompatActivity {
+public class FinalScreen extends AppCompatActivity {
     public String paper;
     public String insert;
     public String date;
@@ -31,7 +31,7 @@ public class finalScreen extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         paper = bundle.getString("paper");
         insert = bundle.getString("insert");
-        date = bundle.getString("date");
+        date = bundle.getString("Date");
         quantity = (EditText) findViewById(R.id.quantity);
         location = (EditText) findViewById(R.id.location);
         comments = (EditText) findViewById(R.id.comments);
@@ -44,10 +44,10 @@ public class finalScreen extends AppCompatActivity {
                 locationText = String.valueOf(location.getText());
                 commentsText = String.valueOf(comments.getText());
                 new FinalQuery().execute();
-                Intent intent = new Intent(finalScreen.this,HomeScreen.class);
+                Intent intent = new Intent(FinalScreen.this,HomeScreen.class);
                intent.putExtra("paper",paper);
                 intent.putExtra("insert",insert);
-                intent.putExtra("date",date);
+                intent.putExtra("Date",date);
 
                 intent.putExtra("quantity",quantityText);
                 intent.putExtra("location",locationText);
@@ -74,7 +74,7 @@ public class finalScreen extends AppCompatActivity {
 
 
                 String curdate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-                String query = "INSERT INTO `Inventory`.`" + paper + "` (`quantity`,`date created`,`insert`,`run date`,`location`,`comments`)  VALUES  ('"+quantityText+"','"+curdate+"','"+insert+"','"+date+"','"+locationText+"','"+commentsText+"'); ";
+                String query = "INSERT INTO `Inventory`.`" + paper + "` (`quantity`,`Date created`,`insert`,`run Date`,`location`,`comments`)  VALUES  ('"+quantityText+"','"+curdate+"','"+insert+"','"+date+"','"+locationText+"','"+commentsText+"'); ";
                 System.out.println("Query: "+query);
 
                 Statement stmt = connection.createStatement();

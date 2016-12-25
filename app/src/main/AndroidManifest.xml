@@ -25,19 +25,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.omega.inventoryConsolidated.insert_activity"
+            android:name="com.example.omega.inventoryConsolidated.Insert"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.omega.inventoryConsolidated.date"
+            android:name="com.example.omega.inventoryConsolidated.Date"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.omega.inventoryConsolidated.finalScreen"
+            android:name="com.example.omega.inventoryConsolidated.FinalScreen"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.omega.inventoryConsolidated.MainActivity"
+            android:name="com.example.omega.inventoryConsolidated.Paper"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
 

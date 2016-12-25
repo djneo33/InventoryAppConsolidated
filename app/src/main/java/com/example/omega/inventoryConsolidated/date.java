@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
-public class date extends AppCompatActivity {
+public class Date extends AppCompatActivity {
     public String paper;
     public String insert;
     public int day;
@@ -23,7 +23,7 @@ public class date extends AppCompatActivity {
         paper = bundle.getString("paper");
         insert = bundle.getString("insert");
         TextView textView = (TextView) findViewById(R.id.dateText);
-        textView.setText("Choose run date for " + paper + " " + insert);
+        textView.setText("Choose run Date for " + paper + " " + insert);
         Button button = (Button) findViewById(R.id.button2);
         final DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
         button.setOnClickListener(new View.OnClickListener() {
@@ -36,10 +36,10 @@ public class date extends AppCompatActivity {
 
 
                 System.out.println(date);
-                Intent intent = new Intent(date.this, finalScreen.class);
+                Intent intent = new Intent(Date.this, FinalScreen.class);
                 intent.putExtra("paper", paper);
                 intent.putExtra("insert", insert);
-                intent.putExtra("date", date);
+                intent.putExtra("Date", date);
                 startActivity(intent);
             }
         });

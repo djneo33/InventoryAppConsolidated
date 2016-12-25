@@ -21,7 +21,7 @@ import java.sql.ResultSet;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class Paper extends AppCompatActivity {
     public ListView listView;
 
     public String screen = "main";
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);//
+        setContentView(R.layout.activity_paper);//
 
 
         new GetTables().execute();
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
                 paper = item;
                 screen = "insert";
-                Intent intent = new Intent(MainActivity.this, insert_activity.class);
+                Intent intent = new Intent(Paper.this, Insert.class);
                 intent.putExtra("paper", item);
                 startActivity(intent);
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
 
 
-            ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this, R.layout.listitem, R.id.textview1, tablenames);
+            ArrayAdapter adapter = new ArrayAdapter<String>(Paper.this, R.layout.listitem, R.id.textview1, tablenames);
             listView.setAdapter(adapter);
 
 

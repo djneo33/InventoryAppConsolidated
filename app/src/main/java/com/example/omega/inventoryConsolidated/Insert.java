@@ -20,14 +20,14 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class insert_activity extends AppCompatActivity {
+public class Insert extends AppCompatActivity {
     public String paper;
     public ListView listview;
     public String m_Text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insert_activity);
+        setContentView(R.layout.activity_insert);
         new GetInsert().execute();
         Bundle extra = getIntent().getExtras();
         paper = extra.getString("paper");
@@ -38,11 +38,11 @@ public class insert_activity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(insert_activity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Insert.this);
 
 
 // Set up the input
-                final EditText input = new EditText(insert_activity.this);
+                final EditText input = new EditText(Insert.this);
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
                 input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
@@ -52,7 +52,7 @@ public class insert_activity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         m_Text = input.getText().toString();
-                        Intent intent = new Intent(insert_activity.this, date.class);
+                        Intent intent = new Intent(Insert.this, Date.class);
                        intent.putExtra("insert",m_Text);
                         intent.putExtra("paper",paper);
                         startActivity(intent);
@@ -79,7 +79,7 @@ public class insert_activity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String clicked = (String) listview.getItemAtPosition(position);
 
-                Intent intent = new Intent(insert_activity.this, date.class);
+                Intent intent = new Intent(Insert.this, Date.class);
                 intent.putExtra("insert",clicked);
                 intent.putExtra("paper",paper);
                 startActivity(intent);
@@ -123,7 +123,7 @@ public class insert_activity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
 
-            ArrayAdapter adapter = new ArrayAdapter<String>(insert_activity.this, R.layout.listitem, R.id.textview1, list);
+            ArrayAdapter adapter = new ArrayAdapter<String>(Insert.this, R.layout.listitem, R.id.textview1, list);
             listview.setAdapter(adapter);
         }
     }

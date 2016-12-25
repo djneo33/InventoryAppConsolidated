@@ -61,7 +61,7 @@ public class ViewRecordsMain extends AppCompatActivity {
                 while (resultSet.next()) {
                     quantity.add(resultSet.getString("quantity"));
                     insert.add(resultSet.getString("insert"));
-                    rundate.add(resultSet.getString("run date"));
+                    rundate.add(resultSet.getString("run Date"));
                     location.add(resultSet.getString("location"));
                 }
 
