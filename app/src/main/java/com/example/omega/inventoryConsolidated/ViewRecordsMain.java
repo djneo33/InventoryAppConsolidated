@@ -1,17 +1,13 @@
-package com.example.omega.inventory;
+package com.example.omega.inventoryConsolidated;
 
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 

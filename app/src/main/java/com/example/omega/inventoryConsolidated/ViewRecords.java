@@ -1,63 +1,42 @@
-package com.example.omega.inventory;
+package com.example.omega.inventoryConsolidated;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-
 import android.widget.ListView;
-
 import android.widget.TextView;
-
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
-
 import java.sql.ResultSet;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class ViewRecords extends AppCompatActivity {
+    public TextView textView;
     public ListView listView;
-
-    public String screen = "main";
-    public String paper = "";
-    public TextView browserbar;
-
+   public  String paper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);//
-
-
+        setContentView(R.layout.activity_view_records);
         new GetTables().execute();
-        listView = (ListView) findViewById(R.id.listView);
-
-        browserbar = (TextView) findViewById(R.id.browserBar);
+         listView = (ListView)findViewById(R.id.listView3);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String item = (String) listView.getItemAtPosition(position);
-
-                paper = item;
-                screen = "insert";
-                Intent intent = new Intent(MainActivity.this, insert_activity.class);
-                intent.putExtra("paper", item);
+                paper = (String) listView.getItemAtPosition(position);
+                Intent intent = new Intent(ViewRecords.this,ViewRecordsMain.class);
+                intent.putExtra("paper", paper);
                 startActivity(intent);
-
-
             }
         });
 
     }
+
 
 
     private class GetTables extends AsyncTask<Void, String[], String> {
@@ -94,11 +73,21 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
 
 
-            ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this, R.layout.listitem, R.id.textview1, tablenames);
+            ArrayAdapter adapter = new ArrayAdapter<String>(ViewRecords.this, R.layout.listitem, R.id.textview1, tablenames);
             listView.setAdapter(adapter);
 
 
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 }

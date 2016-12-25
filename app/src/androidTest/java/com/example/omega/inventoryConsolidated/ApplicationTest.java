@@ -1,4 +1,4 @@
-package com.example.omega.inventory;
+package com.example.omega.inventoryConsolidated;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

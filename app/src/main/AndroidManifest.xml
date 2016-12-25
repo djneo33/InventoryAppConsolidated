@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.omega.inventory">
+    package="com.example.omega.inventoryConsolidated">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <activity
-            android:name=".HomeScreen"
+            android:name="com.example.omega.inventoryConsolidated.HomeScreen"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
 
@@ -25,28 +25,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".insert_activity"
+            android:name="com.example.omega.inventoryConsolidated.insert_activity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".date"
+            android:name="com.example.omega.inventoryConsolidated.date"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".finalScreen"
+            android:name="com.example.omega.inventoryConsolidated.finalScreen"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.omega.inventoryConsolidated.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ViewRecords"
+            android:name="com.example.omega.inventoryConsolidated.ViewRecords"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ViewRecordsMain"
+            android:name="com.example.omega.inventoryConsolidated.ViewRecordsMain"
             android:configChanges="orientation"
             android:screenOrientation="portrait"></activity>
     </application>

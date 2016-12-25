@@ -1,4 +1,4 @@
-package com.example.omega.inventory;
+package com.example.omega.inventoryConsolidated;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -9,12 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.mysql.jdbc.ResultSet;
-
 import java.sql.Connection;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class finalScreen extends AppCompatActivity {
