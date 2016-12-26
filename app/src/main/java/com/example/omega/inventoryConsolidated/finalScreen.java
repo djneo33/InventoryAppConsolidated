@@ -25,6 +25,7 @@ public class finalScreen extends AppCompatActivity {
     public String locationText;
     public String commentsText;
     public Boolean newPaper;
+    public Boolean newInsert;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class finalScreen extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         paper = bundle.getString("paper");
         newPaper = bundle.getBoolean("createPaper");
+        newInsert = bundle.getBoolean("createInsert");
         insert = bundle.getString("insert");
         date = bundle.getString("Date");
         quantity = (EditText) findViewById(R.id.quantity);
@@ -76,11 +78,26 @@ public class finalScreen extends AppCompatActivity {
 
 
                 String curdate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-                String query = "INSERT INTO `Inventory`.`" + paper + "` (`quantity`,`Date created`,`insert`,`run Date`,`location`,`comments`)  VALUES  ('"+quantityText+"','"+curdate+"','"+insert+"','"+date+"','"+locationText+"','"+commentsText+"'); ";
+                String query = "INSERT INTO `Inventory`.`ActiveInventory` (`Paper`,`Insert`,`RunDate`,`Amount`,`DateCreated`,`Location`,`Comments`)  VALUES  ('"+paper+"','"+insert+"','"+date+"','"+quantityText+"','"+curdate+"','"+locationText+"',`"+commentsText+"`); ";
                 System.out.println("Query: "+query);
 
                 Statement stmt = connection.createStatement();
                 stmt.execute(query);
+
+                if (newPaper){
+
+                    String queryforpaper = "INSERT INTO `Inventory`.`PaperNames` (`Paper`) VALUES (`"+paper+"`);";
+                    Statement paperStatement = connection.createStatement();
+                    paperStatement.execute(queryforpaper);
+
+                }
+                if (newInsert){
+                    String queryforinsert = "INSERT INTO  `Inventory`.`InsertNames` (`Insert`) VALUES (`"+insert+"`);";
+                    Statement insertStatement = connection.createStatement();
+                    insertStatement.execute(queryforinsert);
+                }
+
+
 
                 connection.close();
 

@@ -28,6 +28,7 @@ public class Insert extends AppCompatActivity {
     public ListView listview;
    public EditText createnewinsert;
     public Boolean newPaper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +44,12 @@ public class Insert extends AppCompatActivity {
         createnewinsert.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+
                 Intent intent = new Intent(Insert.this, date.class);
                 intent.putExtra("insert",textView.getText().toString());
                 intent.putExtra("paper",paper);
                 intent.putExtra("createPaper",newPaper);
+                intent.putExtra("createInsert",true);
 
                 startActivity(intent);
                 return true;
@@ -69,6 +72,7 @@ public class Insert extends AppCompatActivity {
                 intent.putExtra("insert",clicked);
                 intent.putExtra("paper",paper);
                 intent.putExtra("createPaper",newPaper);
+                intent.putExtra("createInsert",false);
 
                 startActivity(intent);
             }
