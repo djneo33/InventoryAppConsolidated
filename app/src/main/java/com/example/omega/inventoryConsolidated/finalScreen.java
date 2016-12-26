@@ -83,23 +83,26 @@ public class finalScreen extends AppCompatActivity {
 
                 Statement stmt = connection.createStatement();
                 stmt.execute(query);
-
+                connection.close();
                 if (newPaper){
-
+                    Connection connection1 = MySql.getSqlConnection();
                     String queryforpaper = "INSERT INTO `Inventory`.`PaperNames` (`Paper`) VALUES (`"+paper+"`);";
                     Statement paperStatement = connection.createStatement();
                     paperStatement.execute(queryforpaper);
+                    connection1.close();
 
                 }
                 if (newInsert){
+                    Connection connection2 = MySql.getSqlConnection();
                     String queryforinsert = "INSERT INTO  `Inventory`.`InsertNames` (`Insert`) VALUES (`"+insert+"`);";
                     Statement insertStatement = connection.createStatement();
                     insertStatement.execute(queryforinsert);
+                    connection2.close();
                 }
 
 
 
-                connection.close();
+                
 
             } catch (Exception e) {
             }
