@@ -72,13 +72,13 @@ public class finalScreen extends AppCompatActivity {
     private class FinalQuery extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
-            Connection connection = MySql.getSqlConnection();
+
 
             try {
 
-
+                Connection connection = MySql.getSqlConnection();
                 String curdate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-                String query = "INSERT INTO `Inventory`.`ActiveInventory` (`Paper`,`Insert`,`RunDate`,`Amount`,`DateCreated`,`Location`,`Comments`)  VALUES  ('"+paper+"','"+insert+"','"+date+"','"+quantityText+"','"+curdate+"','"+locationText+"',`"+commentsText+"`); ";
+                String query = "INSERT INTO `Inventory`.`ActiveInventory` (`Paper`,`Insert`,`RunDate`,`Amount`,`DateCreated`,`Location`,`Comments`)  VALUES  ('"+paper+"','"+insert+"','"+date+"','"+quantityText+"','"+curdate+"','"+locationText+"','"+commentsText+"'); ";
                 System.out.println("Query: "+query);
 
                 Statement stmt = connection.createStatement();
@@ -86,16 +86,16 @@ public class finalScreen extends AppCompatActivity {
                 connection.close();
                 if (newPaper){
                     Connection connection1 = MySql.getSqlConnection();
-                    String queryforpaper = "INSERT INTO `Inventory`.`PaperNames` (`Paper`) VALUES (`"+paper+"`);";
-                    Statement paperStatement = connection.createStatement();
+                    String queryforpaper = "INSERT INTO `Inventory`.`PaperNames` (`Paper`) VALUES ('"+paper+"');";
+                    Statement paperStatement = connection1.createStatement();
                     paperStatement.execute(queryforpaper);
                     connection1.close();
 
                 }
                 if (newInsert){
                     Connection connection2 = MySql.getSqlConnection();
-                    String queryforinsert = "INSERT INTO  `Inventory`.`InsertNames` (`Insert`) VALUES (`"+insert+"`);";
-                    Statement insertStatement = connection.createStatement();
+                    String queryforinsert = "INSERT INTO  `Inventory`.`InsertNames` (`Insert`) VALUES ('"+insert+"');";
+                    Statement insertStatement = connection2.createStatement();
                     insertStatement.execute(queryforinsert);
                     connection2.close();
                 }
@@ -105,6 +105,7 @@ public class finalScreen extends AppCompatActivity {
                 
 
             } catch (Exception e) {
+                System.out.println(e);
             }
 
             return null;
