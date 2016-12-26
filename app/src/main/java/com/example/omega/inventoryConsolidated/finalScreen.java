@@ -24,12 +24,14 @@ public class finalScreen extends AppCompatActivity {
     public String quantityText;
     public String locationText;
     public String commentsText;
+    public Boolean newPaper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_screen);
         Bundle bundle = getIntent().getExtras();
         paper = bundle.getString("paper");
+        newPaper = bundle.getBoolean("createPaper");
         insert = bundle.getString("insert");
         date = bundle.getString("Date");
         quantity = (EditText) findViewById(R.id.quantity);

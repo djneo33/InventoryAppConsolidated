@@ -24,6 +24,7 @@ public class Insert extends AppCompatActivity {
     public String paper;
     public ListView listview;
     public String m_Text;
+    public Boolean newPaper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class Insert extends AppCompatActivity {
         new GetInsert().execute();
         Bundle extra = getIntent().getExtras();
         paper = extra.getString("paper");
-
+        newPaper = extra.getBoolean("createPaper");
         Button button = (Button) findViewById(R.id.button);
         button.setText("Create new insert for " + paper);
 
@@ -82,6 +83,7 @@ public class Insert extends AppCompatActivity {
                 Intent intent = new Intent(Insert.this, date.class);
                 intent.putExtra("insert",clicked);
                 intent.putExtra("paper",paper);
+                intent.putExtra("createPaper",newPaper);
                 startActivity(intent);
             }
         });

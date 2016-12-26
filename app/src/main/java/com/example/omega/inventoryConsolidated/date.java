@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class date extends AppCompatActivity {
     public String paper;
     public String insert;
+    public  Boolean newPaper;
     public int day;
     public int month;
     public int year;
@@ -22,6 +23,7 @@ public class date extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         paper = bundle.getString("paper");
         insert = bundle.getString("insert");
+        newPaper = bundle.getBoolean("createPaper");
         TextView textView = (TextView) findViewById(R.id.dateText);
         textView.setText("Choose run Date for " + paper + " " + insert);
         Button button = (Button) findViewById(R.id.button2);
@@ -40,6 +42,7 @@ public class date extends AppCompatActivity {
                 intent.putExtra("paper", paper);
                 intent.putExtra("insert", insert);
                 intent.putExtra("Date", date);
+                intent.putExtra("createPaper",newPaper);
                 startActivity(intent);
             }
         });

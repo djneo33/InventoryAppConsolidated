@@ -1,10 +1,10 @@
 package com.example.omega.inventoryConsolidated;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
 import android.view.WindowManager;
@@ -22,12 +22,13 @@ import java.sql.DatabaseMetaData;
 
 import java.sql.ResultSet;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Paper extends AppCompatActivity {
     public ListView listView;
 
-    public String screen = "main";
+   public  Boolean newPaper;
     public String paper = "";
     public TextView browserbar;
     public EditText createnewpaper;
@@ -40,8 +41,21 @@ public class Paper extends AppCompatActivity {
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         createnewpaper = (EditText)findViewById(R.id.createNewPaper);
+        createnewpaper.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Intent intent = new Intent(Paper.this, Insert.class);
+                newPaper = true;
+                paper = v.getText().toString();
+                intent.putExtra("paper",paper);
+                intent.putExtra("createPaper",newPaper);
+                startActivity(intent);
 
-        new GetTables().execute();
+                return true;
+            }
+        });
+
+        new getPaperNames().execute();
         listView = (ListView) findViewById(R.id.listView);
 
         browserbar = (TextView) findViewById(R.id.browserBar);
@@ -52,9 +66,11 @@ public class Paper extends AppCompatActivity {
                 String item = (String) listView.getItemAtPosition(position);
 
                 paper = item;
-                screen = "insert";
+                newPaper = false;
+
                 Intent intent = new Intent(Paper.this, Insert.class);
                 intent.putExtra("paper", item);
+                intent.putExtra("createPaper",newPaper);
                 startActivity(intent);
 
 
@@ -64,8 +80,8 @@ public class Paper extends AppCompatActivity {
     }
 
 
-    private class GetTables extends AsyncTask<Void, String[], String> {
-        ArrayList tablenames = new ArrayList(1);
+    private class getPaperNames extends AsyncTask<Void, String[], String> {
+        ArrayList paperNames = new ArrayList(1);
 
         @Override
         protected String doInBackground(Void... params) {
@@ -75,13 +91,12 @@ public class Paper extends AppCompatActivity {
             try {
 
 
-                DatabaseMetaData m = connection.getMetaData();
-                ResultSet rs = m.getTables("Inventory", null, "%", null);
+                Statement st = connection.createStatement();
+                String sql = ("select * from `Inventory`.`PaperNames`");
+                ResultSet rs = st.executeQuery(sql);
 
-                while (rs.next()) {
-                    tablenames.add(rs.getString(3));
-                    System.out.println("im there");
-
+                while (rs.next()){
+                    paperNames.add(rs.getString("Paper"));
                 }
 
 
@@ -98,7 +113,7 @@ public class Paper extends AppCompatActivity {
         protected void onPostExecute(String s) {
 
 
-            ArrayAdapter adapter = new ArrayAdapter<String>(Paper.this, R.layout.listitem, R.id.textview1, tablenames);
+            ArrayAdapter adapter = new ArrayAdapter<String>(Paper.this, R.layout.listitem, R.id.textview1, paperNames);
             listView.setAdapter(adapter);
 
 
