@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.sql.ResultSet;
 
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 public class Insert extends AppCompatActivity {
     public String paper;
     public ListView listview;
-    public String m_Text;
+   public EditText createnewinsert;
     public Boolean newPaper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,20 @@ public class Insert extends AppCompatActivity {
         newPaper = extra.getBoolean("createPaper");
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        createnewinsert = (EditText)findViewById(R.id.createNewInsert);
+        createnewinsert.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                Intent intent = new Intent(Insert.this, date.class);
+                intent.putExtra("insert",textView.getText().toString());
+                intent.putExtra("paper",paper);
+                intent.putExtra("createPaper",newPaper);
+
+                startActivity(intent);
+                return true;
+            }
+        });
 
 
 
@@ -70,7 +86,7 @@ public class Insert extends AppCompatActivity {
 
 
             try {
-                String query = "select * from `Inventory`.`Insert`";
+                String query = "select * from `Inventory`.`InsertNames`";
 
 
 
