@@ -94,7 +94,7 @@ public class Insert extends AppCompatActivity {
                Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
-                    list.add(rs.getString("insert"));
+                    list.add(rs.getString("Insert"));
                     System.out.println("im here");
 
                 }
