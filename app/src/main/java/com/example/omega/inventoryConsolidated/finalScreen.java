@@ -14,7 +14,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FinalScreen extends AppCompatActivity {
+public class finalScreen extends AppCompatActivity {
     public String paper;
     public String insert;
     public String date;
@@ -44,7 +44,7 @@ public class FinalScreen extends AppCompatActivity {
                 locationText = String.valueOf(location.getText());
                 commentsText = String.valueOf(comments.getText());
                 new FinalQuery().execute();
-                Intent intent = new Intent(FinalScreen.this,HomeScreen.class);
+                Intent intent = new Intent(finalScreen.this,HomeScreen.class);
                intent.putExtra("paper",paper);
                 intent.putExtra("insert",insert);
                 intent.putExtra("Date",date);

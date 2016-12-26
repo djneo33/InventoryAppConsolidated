@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
-public class Date extends AppCompatActivity {
+public class date extends AppCompatActivity {
     public String paper;
     public String insert;
     public int day;
@@ -36,7 +36,7 @@ public class Date extends AppCompatActivity {
 
 
                 System.out.println(date);
-                Intent intent = new Intent(Date.this, FinalScreen.class);
+                Intent intent = new Intent(com.example.omega.inventoryConsolidated.date.this, finalScreen.class);
                 intent.putExtra("paper", paper);
                 intent.putExtra("insert", insert);
                 intent.putExtra("Date", date);

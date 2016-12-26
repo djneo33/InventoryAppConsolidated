@@ -52,7 +52,7 @@ public class Insert extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         m_Text = input.getText().toString();
-                        Intent intent = new Intent(Insert.this, Date.class);
+                        Intent intent = new Intent(Insert.this, date.class);
                        intent.putExtra("insert",m_Text);
                         intent.putExtra("paper",paper);
                         startActivity(intent);
@@ -79,7 +79,7 @@ public class Insert extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String clicked = (String) listview.getItemAtPosition(position);
 
-                Intent intent = new Intent(Insert.this, Date.class);
+                Intent intent = new Intent(Insert.this, date.class);
                 intent.putExtra("insert",clicked);
                 intent.putExtra("paper",paper);
                 startActivity(intent);
